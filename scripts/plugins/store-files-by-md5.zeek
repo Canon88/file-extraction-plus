@@ -3,7 +3,7 @@
 
 event file_state_remove(f: fa_file)
 	{
-	if ( !f$info?$extracted || !f$info?$md5 || FileExtraction::path == "" || !f$info?$enrich)
+	if ( !f$info?$extracted || !f$info?$md5 || FileExtraction::path == "" )
 		return;
 
 	local orig = f$info$extracted;
@@ -16,10 +16,12 @@ event file_state_remove(f: fa_file)
 	local dest_dir = fmt("%s%s", FileExtraction::path, ndate);
 	mkdir(dest_dir);
 	local dest = fmt("%s/%s-%s.%s", dest_dir, f$source, f$info$md5, extension);
+
 	local cmd = fmt("mv %s %s", orig, dest);
 	when ( local result = Exec::run([$cmd=cmd]) )
 	    {
 	    }
+	
 	if ( rename(orig, dest) )
     	f$info$extracted = dest;
 	}

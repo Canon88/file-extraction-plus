@@ -2,6 +2,9 @@
 # All other files may be overwritten during upgrade 
 module FileExtraction;
 
+# Configure file-extract_limit
+@load ./file-extract_limit
+
 # Configure where extracted files will be stored
 redef path = "/data/nta/zeek/extract/";
 
