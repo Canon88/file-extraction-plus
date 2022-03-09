@@ -27,7 +27,7 @@ event file_sniff(f: fa_file, meta: fa_metadata)
 
 		if ( f$source == "HTTP" )
 			{
-			# Ignore logical priority matching by Canon
+			# Ignore priority by Canon
 			if ( !hook FileExtraction::http_ignore(f, meta) )
 				return;
 
