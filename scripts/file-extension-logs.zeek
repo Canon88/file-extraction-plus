@@ -8,6 +8,9 @@ hook Files::log_policy(rec: Files::Info, id: Log::ID, filter: Log::Filter)
     {    
     if ( rec$flags == "" )
         break;
+
+    # TO:DO
+    # rec$filename = "something";
     }
 
 event zeek_init()
