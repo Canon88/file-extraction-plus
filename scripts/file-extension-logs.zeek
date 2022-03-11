@@ -9,8 +9,10 @@ hook Files::log_policy(rec: Files::Info, id: Log::ID, filter: Log::Filter)
     if ( rec$flags == "" )
         break;
 
-    # TO:DO
-    # rec$filename = "something";
+    # Extract the real file name
+    # Example: /var/mobile/Containers/Data/Application/6532EFD6-7968-498B-9254-3B296A042C32/Documents/pubilsh0.jpg
+    local filename = split_string(rec$filename, /\//);
+    rec$filename = filename[|filename| -1];
     }
 
 event zeek_init()
